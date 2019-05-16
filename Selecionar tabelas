@@ -1,0 +1,27 @@
+def select_table_of_database(database):
+    if database != '0':
+        conec = sql_biblioteca.connect(
+        host = 'localhost',
+        user = 'root',
+        passwd = '',
+        database = database
+        )
+        tabelas = []
+        mause = conec.cursor()
+        mause.execute('SHOW TABLES')
+        for table in mause:
+            convert = str(table)
+            tabelas.append(convert[2:-3])
+        for index, item in enumerate(tabelas):
+            print(f'{index + 1} - {item.upper()}')
+        while True:
+            try:
+                index = int(input("Escolha: ")) - 1
+                assert index >= 0
+                assert index <= len(tabelas)
+                break
+            except ValueError:
+                print('Digite um número.')
+            except AssertionError:
+                print("Digite um número dentro do alcance.")
+        return tabelas[index]
