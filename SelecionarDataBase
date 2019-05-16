@@ -1,0 +1,19 @@
+def select_database():
+    dataBases = db()
+    if dataBases != 0:
+        for index, item in enumerate(dataBases):
+            print(f'{index + 1} - {item.upper()}')
+        while True:
+            try:
+                index = int(input("Escolha: ")) - 1
+                assert index >= 0
+                assert index <= len(dataBases)
+                break
+            except ValueError:
+                print('Digite um número.')
+            except AssertionError:
+                print("Digite um número dentro do alcance.")
+
+        return dataBases[index]
+    else:
+        return 0
