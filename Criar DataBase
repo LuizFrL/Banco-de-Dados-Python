@@ -1,0 +1,8 @@
+def create_database():
+    db_nome = input("Nome: ").capitalize()
+    if not db_nome.isnumeric():
+        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_nome}")
+        conexao.commit()
+        return print("Criado com sucesso!")
+    else:
+        return print('Nome não pode ser numérico.')
