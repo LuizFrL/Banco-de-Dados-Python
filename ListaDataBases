@@ -1,0 +1,13 @@
+def db():
+    db_Convertidas = []
+    cursor.execute("SHOW DATABASES")
+    for db in cursor:
+        convert = str(db)
+        db_Convertidas.append(convert[2:-3])
+    db_Convertidas = sorted(db_Convertidas)
+    db_Convertidas.remove('information_schema')
+    db_Convertidas.remove('mysql')
+    if len(db_Convertidas) == 0:
+        return 0
+    else:
+        return db_Convertidas
