@@ -1,0 +1,11 @@
+def add_values(database, tabela):
+    conec = sql_biblioteca.connect(
+        host='localhost',
+        user='root',
+        passwd='',
+        database=database
+    )
+    mause = conec.cursor()
+    mause.execute(f'DESCRIBE {database}.{tabela}')
+    itens = mause.fetchall()
+    print(itens)
